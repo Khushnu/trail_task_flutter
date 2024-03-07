@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:task_flutter/Models/categorymodel.dart';
@@ -75,108 +74,114 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Column(
             children: [
-              Row(
-                children: List.generate(storyModelList.length, (index) {
-                  var data = storyModelList[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(3.0).copyWith(
-                      top: 10,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 84,
-                          width: 85,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(data.borderimage)),
-                          ),
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                            color: Colors.grey,
-                                            blurRadius: 9,
-                                            spreadRadius: 5)
-                                      ]),
-                                  child: Center(
-                                    child: Image.asset(data.image),
-                                  ),
-                                ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(storyModelList.length, (index) {
+                    var data = storyModelList[index];
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0).copyWith(
+                          top: 10,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 84,
+                              width: 85,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(data.borderimage)),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Container(
-                                    height: 20,
-                                    width: 60,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 3),
-                                    decoration: BoxDecoration(
-                                        color: data.optionbgColor,
-                                        borderRadius: BorderRadius.circular(4)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset(data.icons, scale: 1.4),
-                                        TextWidget(
-                                          text: data.options,
-                                          textColor: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        )
-                                      ],
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: Container(
+                                      height: 60,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius: BorderRadius.circular(10),
+                                          boxShadow: const [
+                                            BoxShadow(
+                                                color: Colors.grey,
+                                                blurRadius: 9,
+                                                spreadRadius: 5)
+                                          ]),
+                                      child: Center(
+                                        child: Image.asset(data.image),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              )
-                            ],
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 5),
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Container(
+                                        height: 20,
+                                        width: 60,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 3),
+                                        decoration: BoxDecoration(
+                                            color: data.optionbgColor,
+                                            borderRadius: BorderRadius.circular(4)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Image.asset(data.icons, scale: 1.4),
+                                            TextWidget(
+                                              text: data.options,
+                                              textColor: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            TextWidget(
+                              text: data.name,
+                              textColor: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  })
+                    ..insert(
+                        0,
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: StoryWidget(
+                            frame: 'images/Subtract.png',
+                            image: 'images/profile.png',
+                            name: 'Your Story',
                           ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        TextWidget(
-                          text: data.name,
-                          textColor: Colors.white,
-                        )
-                      ],
-                    ),
-                  );
-                })
-                  ..insert(
-                      0,
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: StoryWidget(
-                          frame: 'images/Subtract.png',
-                          image: 'images/profile.png',
-                          name: 'Your Story',
-                        ),
-                      ))
-                  ..insert(
-                      1,
-                      Padding(
-                        padding: const EdgeInsets.all(8.0)
-                            .copyWith(right: 1, left: 1),
-                        child: SizedBox(
-                          height: 40,
-                          child: VerticalDivider(
-                            color: Colors.grey.withOpacity(0.2),
-                            thickness: 2,
-                            endIndent: 10,
+                        ))
+                    ..insert(
+                        1,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0)
+                              .copyWith(right: 1, left: 1),
+                          child: SizedBox(
+                            height: 40,
+                            child: VerticalDivider(
+                              color: Colors.grey.withOpacity(0.2),
+                              thickness: 2,
+                              endIndent: 10,
+                            ),
                           ),
-                        ),
-                      )),
+                        )),
+                ),
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -224,10 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   var data = newsFeedList[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
+                    // ignore: sized_box_for_whitespace
                     child: Container(
                       height: data.imageListt.length == 1
-                          ? MediaQuery.sizeOf(context).height * 0.5 + 20
-                          : MediaQuery.sizeOf(context).height * 0.7,
+                          ? MediaQuery.sizeOf(context).height * 0.5  + 40
+                          : MediaQuery.sizeOf(context).height * 0.7 + 40 ,
                       width: double.infinity,
                       // color: Colors.amber,
                       child: Column(
@@ -311,8 +317,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(
                                         width:
                                             MediaQuery.sizeOf(context).width *
-                                                    0.2 +
-                                                41,
+                                                    0.2 
+                                               
                                       ),
                                       const Icon(
                                         Icons.more_vert,
@@ -353,13 +359,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             children: data.imageListt
                                 .skip(1)
-                                .map((e) => SizedBox(
-                                    height: 100,
-                                    width: 143,
-                                    child: Image.asset(
-                                      e,
-                                      fit: BoxFit.fill,
-                                    )))
+                                .map((e) => Expanded(
+                                  child: SizedBox(
+                                      height: 100,
+                                      width: 143,
+                                      child: Image.asset(
+                                        e,
+                                        fit: BoxFit.fill,
+                                      )),
+                                ))
                                 .toList(),
                           ),
                           if (data.imageListt.length > 1)
@@ -402,7 +410,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(
                                         width:
                                             MediaQuery.sizeOf(context).width *
-                                                0.5,
+                                                0.4+ 15,
                                       ),
                                       const Stack(
                                         children: [
