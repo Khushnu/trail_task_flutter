@@ -25,9 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         backgroundColor: Colors.black,
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 1),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
